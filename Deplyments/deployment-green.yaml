@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knodeapp-green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: knodeapp
+      version: green
+  template:
+    metadata:
+      labels:
+        app: knodeapp
+        version: green
+    spec:
+      containers:
+        - name: knodeapp
+          image: norman404/eneroappnodes:<IMAGE_TAG>
+          ports:
+            - containerPort: 3000

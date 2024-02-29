@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knodeapp-blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: knodeapp
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: knodeapp
+        version: blue
+    spec:
+      containers:
+        - name: knodeapp
+          image: norman404/eneroappnodes:<IMAGE_TAG>
+          ports:
+            - containerPort: 3000
