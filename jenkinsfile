@@ -11,7 +11,7 @@ node {
         gitcommit = readFile('.git/commit-id').trim()
     }
     stage('Determinar Entorno') {
-        entornoActivo = sh "kubectl get service knodeapp-service-blue-green -o=jsonpath='{.spec.selector.version}'"
+        entornoActivo = sh "kubectl get service blue-green-service -o=jsonpath='{.spec.selector.version}'"
         if (entornoActivo == 'blue') {
             entornoInactivo = 'green'
         } else {
