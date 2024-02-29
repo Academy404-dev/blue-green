@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: knodeapp-green
+  name: mi-app2-green
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: knodeapp
+      app: mi-app2
       version: green
   template:
     metadata:
       labels:
-        app: knodeapp
+        app: mi-app2
         version: green
     spec:
       containers:
-        - name: knodeapp
+        - name: mi-app2
           image: norman404/eneroappnodes:<IMAGE_TAG>
           ports:
             - containerPort: 3000
