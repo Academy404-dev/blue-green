@@ -37,6 +37,6 @@ node {
         // Considerar agregar pasos para verificar la salud del despliegue
     }
     stage('Switch to Inactive') {
-        sh "kubectl patch service knodeapp-service-blue-green -p '{\"spec\":{\"selector\":{\"version\":\"${entornoInactivo}\"}}}'"
+        sh "kubectl patch service blue-green-service -p '{\"spec\":{\"selector\":{\"version\":\"${entornoInactivo}\"}}}'"
     }
 }
