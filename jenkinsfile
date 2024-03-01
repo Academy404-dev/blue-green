@@ -10,8 +10,11 @@ node {
         sh "git rev-parse --short HEAD > .git/commit-id"                        
         gitcommit = readFile('.git/commit-id').trim()
     }
+    // Etapa para determinar el entorno activo e inactivo
     stage('Determinar Entorno') {
-        entornoActivo = sh "kubectl get service blue-green-service -o=jsonpath='{.spec.selector.version}'"
+        // Corregir aquí: Capturar la salida del comando sh correctamente
+        entornoActivo = sh(script: "kubectl get service blue-green-service -o=jsonpath='{.spec.selector.version}'", returnStdout: true).trim()
+        // Determinar el entorno inactivo en base al entorno activo
         if (entornoActivo == 'blue') {
             entornoInactivo = 'green'
         } else {
